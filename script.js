@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  function limpa_formulário_cep() {
+  function limpa_formulario_cep() {
     // Limpa valores do formulário de cep.
     $("#billing_address_1").val("");
     $("#billing_neighborhood").val("");
@@ -21,13 +21,11 @@ $(document).ready(function () {
 
       //Valida o formato do CEP.
       if (validacep.test(cep)) {
-        //Preenche os campos com "..." enquanto consulta webservice.
-        $("#billing_address_1").val("...");
-        $("#billing_neighborhood").val("...");
-        $("#billing_city").val("...");
-        $("#select2-billing_state-container").val("...");
-        $("#select2-billing_state-container").html("...");
-        $("#select2-billing_state-container").prop("title", "...");
+        //Loading
+        $("body").loading({ stoppable: true });
+
+        // Limpar formulário
+        limpa_formulario_cep();
 
         //Consulta o webservice viacep.com.br/
         $.getJSON(
@@ -44,7 +42,7 @@ $(document).ready(function () {
             } //end if.
             else {
               //CEP pesquisado não foi encontrado.
-              limpa_formulário_cep();
+              limpa_formulario_cep();
               alert("CEP não encontrado.");
             }
           }
@@ -52,13 +50,16 @@ $(document).ready(function () {
       } //end if.
       else {
         //cep é inválido.
-        limpa_formulário_cep();
+        limpa_formulario_cep();
         alert("Formato de CEP inválido.");
       }
     } //end if.
     else {
       //cep sem valor, limpa formulário.
-      limpa_formulário_cep();
+      limpa_formulario_cep();
     }
+
+    // stop loading
+    $("body").loading("stop");
   });
 });

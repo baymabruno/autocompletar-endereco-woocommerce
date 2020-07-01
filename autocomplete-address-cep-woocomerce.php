@@ -18,6 +18,7 @@ function busca_cep_woocommerce($content)
     if (is_checkout()) {
 
         $script = '<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>';
+        $script .= '<script type="text/javascript" src="https://unpkg.com/jquery-easy-loading@2.0.0-rc.2/dist/jquery.loading.min.js" ></script>';
         $script .= '<script type="text/javascript" src="' . plugin_dir_url(__FILE__) . 'script.js" ></script>';
 
         return $content .= $script;
