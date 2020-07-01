@@ -4,7 +4,7 @@
  * Plugin Name: Autocomplete address by CEP Brazil woocommerce
  * Plugin URI:https://testeemproducao.com.br/
  * Description: Plugin autocomplete address by CEP Brazil
- * Version: 1.0
+ * Version: 1.1
  * Author: Bayma Bruno
  * Author URI: https://testeemproducao.com.br/
  */
@@ -23,4 +23,6 @@ function busca_cep_woocommerce($content)
 
         return $content .= $script;
     }
+
+    return $content;
 }
